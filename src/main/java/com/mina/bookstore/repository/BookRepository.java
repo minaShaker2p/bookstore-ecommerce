@@ -1,7 +1,7 @@
 package com.mina.bookstore.repository;
 
-import com.mina.bookstore.model.User;
+import com.mina.bookstore.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends JpaRepository<User, Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 }
