@@ -4,7 +4,9 @@ import com.mina.bookstore.model.Book;
 import com.mina.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +46,13 @@ public class BookController {
     @PutMapping("/update")
     public void updateBook(@RequestBody Book book) {
         bookRepository.save(book);
+    }
+
+    @DeleteMapping(path = { "/{id}" })
+    public Book deleteBook(@PathVariable("id") long id) {
+        Book book = bookRepository.getOne(id);
+        bookRepository.deleteById(id);
+        return book;
     }
 
 }
